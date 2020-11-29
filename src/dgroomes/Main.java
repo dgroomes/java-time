@@ -1,7 +1,6 @@
 package dgroomes;
 
-import java.time.Instant;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 
@@ -16,6 +15,15 @@ public class Main {
 
         verifyFormatting(DateTimeFormatter.ISO_DATE_TIME.withZone(AMERICA_CHICAGO), "2019-01-01T06:00:00.123-06:00[America/Chicago]");
         verifyFormatting(DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(AMERICA_CHICAGO), "2019-01-01T06:00:00.123-06:00");
+
+        // Print the default formatting for various types in "java.time" when "toString" is called. In this case, the
+        // toString method is called by the printf method.
+        ZonedDateTime zonedDateTime = JAN_1_2019_INSTANT.atZone(AMERICA_CHICAGO);
+        System.out.printf("ZonedDateTime: %s%n", zonedDateTime);
+        LocalDateTime localDateTime = LocalDateTime.from(JAN_1_2019_INSTANT.atZone(AMERICA_CHICAGO));
+        System.out.printf("LocalDateTime: %s%n", localDateTime);
+        OffsetDateTime offsetDateTime = OffsetDateTime.from(JAN_1_2019_INSTANT.atZone(AMERICA_CHICAGO));
+        System.out.printf("OffsetDatetime: %s%n", offsetDateTime);
     }
 
     /**
