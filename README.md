@@ -10,4 +10,6 @@ Run with `java src/dgroomes/Main.java` or execute it from within an IDE like Int
 ZonedDateTime: 2019-01-01T06:00:00.123-06:00[America/Chicago]
 LocalDateTime: 2019-01-01T06:00:00.123
 OffsetDatetime: 2019-01-01T06:00:00.123-06:00
+ISO_LOCAL_TIME: 06:00:00.123
+Custom time: 06:00:00
 ```

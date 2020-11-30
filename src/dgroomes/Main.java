@@ -2,7 +2,10 @@ package dgroomes;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
+
+import static java.time.temporal.ChronoField.*;
 
 public class Main {
 
@@ -24,6 +27,22 @@ public class Main {
         System.out.printf("LocalDateTime: %s%n", localDateTime);
         OffsetDateTime offsetDateTime = OffsetDateTime.from(JAN_1_2019_INSTANT.atZone(AMERICA_CHICAGO));
         System.out.printf("OffsetDatetime: %s%n", offsetDateTime);
+
+        // Custom formatting
+        String localTime = DateTimeFormatter.ISO_LOCAL_TIME.format(JAN_1_2019_INSTANT.atZone(AMERICA_CHICAGO));
+        System.out.printf("ISO_LOCAL_TIME: %s%n", localTime);
+
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .appendValue(HOUR_OF_DAY, 2)
+                .appendLiteral(':')
+                .appendValue(MINUTE_OF_HOUR, 2)
+                .optionalStart()
+                .appendLiteral(':')
+                .appendValue(SECOND_OF_MINUTE, 2)
+                .toFormatter();
+        String customTime = formatter.format(JAN_1_2019_INSTANT.atZone(AMERICA_CHICAGO));
+        System.out.printf("Custom time: %s%n", customTime);
+
     }
 
     /**
